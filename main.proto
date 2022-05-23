@@ -16,17 +16,33 @@ service Example {
   rpc BothStream3(stream SimpleMsg3) returns (stream SimpleMsg3);
 }
 
-
+// [Example]{
+//    "number": 2,
+//    "s": "example-string"
+// }
 message SimpleMsg1 {
   int32 number = 1;
   string s = 2;
 }
 
-
+// [Example] {
+//     "number": [7],
+//     "s": ["another-string"]
+// }
 message SimpleMsg2 {
   repeated int32 number = 1;
   repeated string s = 2;
 }
+// [Example] {
+//     "number": [{
+//        "number": [77],
+//        "s": ["the-string"]
+//     }],
+//     "s": [{
+//        "number": [-37],
+//        "s": ["a-string"]
+//     }]
+// }
 message SimpleMsg3 {
   repeated SimpleMsg2 number = 1;
   repeated SimpleMsg2 s = 2;
