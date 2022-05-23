@@ -1,0 +1,33 @@
+syntax = "proto3";
+package streams;
+import "google/protobuf/empty.proto";
+
+service Example {
+  rpc GetStream1(stream SimpleMsg1) returns (google.protobuf.Empty);
+  rpc ReturnStream1(google.protobuf.Empty) returns (stream SimpleMsg1);
+  rpc BothStream1(stream SimpleMsg1) returns (stream SimpleMsg1);
+
+  rpc GetStream2(stream SimpleMsg2) returns (google.protobuf.Empty);
+  rpc ReturnStream2(google.protobuf.Empty) returns (stream SimpleMsg2);
+  rpc BothStream2(stream SimpleMsg2) returns (stream SimpleMsg2);
+
+  rpc GetStream3(stream SimpleMsg3) returns (google.protobuf.Empty);
+  rpc ReturnStream3(google.protobuf.Empty) returns (stream SimpleMsg3);
+  rpc BothStream3(stream SimpleMsg3) returns (stream SimpleMsg3);
+}
+
+
+message SimpleMsg1 {
+  int32 number = 1;
+  string s = 2;
+}
+
+
+message SimpleMsg2 {
+  repeated int32 number = 1;
+  repeated string s = 2;
+}
+message SimpleMsg3 {
+  repeated SimpleMsg2 number = 1;
+  repeated SimpleMsg2 s = 2;
+}

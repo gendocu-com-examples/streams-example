@@ -1,0 +1,7 @@
+spectype: gendocu
+servers:
+    - selector: "*"
+          envs:
+                  - name: "local"
+                            urls:
+                                        - grpc://localhost:6083
